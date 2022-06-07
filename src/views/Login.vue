@@ -14,6 +14,7 @@
 </template>
 
 <script>
+
     export default {
         name: 'Login',
         data() {
@@ -21,15 +22,24 @@
                 input: {
                     username: "",
                     password: ""
+                },
+                mockAccount: {
+                    username: "test",
+                    password: "test"
                 }
             }
         },
         methods: {
             login() {
+              // console.log(this.input.password)
                 if(this.input.username != "" && this.input.password != "") {
                     // This should actually be an api call not a check against this.$parent.mockAccount
-                    if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                        this.$emit("authenticated", true);
+                    if(this.input.username == this.mockAccount.username && this.input.password == this.mockAccount.password) {
+                     this.$root.authenticated = true;
+                      //nextTick(() => console.log(this.$root.authenticated));
+                      console.log(this.$root.authenticated);
+                      //console.log(authenticated);
+
                         this.$router.replace({ name: "Secure" });
                     } else {
                         console.log("The username and / or password is incorrect");

@@ -11,8 +11,6 @@ export default {
   data() {
         return {
             authenticated: false,
-            // this is only for testing purposes no actual app will have this
-            // an api call will validate user credentials
             mockAccount: {
                 username: "test",
                 password: "test"
