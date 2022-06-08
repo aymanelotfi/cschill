@@ -9,7 +9,7 @@
         backgroundImage: `url(${baseImgUrl}/w500${movie.backdrop_path})`
       }"
       class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
-      v-on:click="redirect(movie.id)"
+      v-on:click="redirect(movie)"
     ></div>
   </div>
 </template>
@@ -36,8 +36,9 @@ export default {
   },
   methods:{
     redirect(res){
-        this.$router.replace({ name: "About" });
-        console.log(res);
+       this.$root.movi=res;
+        this.$router.replace({ name: "Movie_Detail" });
+        //console.log(res);
     }
   }
 };

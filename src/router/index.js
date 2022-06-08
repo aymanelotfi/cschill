@@ -29,6 +29,12 @@ const routes = [
     import("../views/Add.vue")
 }
 ,{
+   path: '/movie_detail',
+   name: 'Movie_Detail',
+   component: function () {
+     return import('../views/Movie_Detail.vue')
+   }}
+,{
    path: '/login',
    name: 'Login',
    component: function () {

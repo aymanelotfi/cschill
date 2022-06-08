@@ -11,6 +11,7 @@ export default {
   data() {
         return {
             authenticated: false,
+            movi:Object,
             mockAccount: {
                 username: "test",
                 password: "test"
@@ -40,6 +41,9 @@ export default {
   color: #2c3e50;
   padding: 0;
   margin: 0;
+  height:100vh;
+  display:flex;
+  flex-direction: column;
 }
 body {
   padding: 0;
