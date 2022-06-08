@@ -41,10 +41,15 @@
 
     <div class="w-full overflow-auto  md:w-full lg:w-1/2 max-w-4xl rounded overflow-hidden shadow-lg m-4 flex justify-between">
       <div class="md:flex-shrink-0">
-        <img class="md:w-56"
+        <!-- <img class="md:w-56"
              src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/nAU74GmpUk7t5iklEp3bufwDq4n.jpg"
-             alt="$root.movi.title" />
+             alt="$root.movi.title" /> -->
+             <img class="md:w-56 h-80"
+      :src="'https://image.tmdb.org/t/p/original/' + $root.movi.backdrop_path"
+      alt="Movie Poster"
+    />
       </div>
+
       <div class="flex flex-col flex-grow px-8 py-4 bg-color-333">
         <h3 class="font-bold text-4xl md:text-2xl lg:text-2xl text-black-200 movie--title">{{$root.movi.title}}</h3>
         <span class="movie--year text-xl lg:text-sm lg:mb-4">{{$root.movi.release_date.substring(0,4)}}</span>
@@ -55,6 +60,7 @@
           <button class="text-lg mr-4 lg:text-sm text-black-200"></button>
           <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Add to List</button>
         </div>
+        <Stars  :movieId="$root.movi.id" />
       </div>
     </div>
   </div>
@@ -133,12 +139,12 @@
 
 <script>
 // import axios from "axios";
-// import Stars from "@/components/Stars.vue";
+import Stars from "@/components/Stars.vue";
 
 export default {
   name: "Movie_Detail",
   components: {
-    // Stars,
+    Stars,
   },
   data: function () {
     return {

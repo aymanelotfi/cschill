@@ -1,4 +1,5 @@
 <template>
+  <p> Rate this movie </p>
   <div class="rating">
     <input
       type="radio"
@@ -44,52 +45,54 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 
 export default {
-  name: "Movie",
-  props: {
-    movieId: 0,
-  },
+  name: "Rating",
   data: function () {
     return {
       rate: 0,
     };
   },
   methods: {
-    sendRating: function (rate) {
-      this.rate = rate;
-      axios
-        .post(`${process.env.VUE_APP_BACKEND_BASE_URL}/movies/rate`, {
-          movie: this.movieId,
-          user: this.$root.currentUserEmail,
-          rate: rate,
-        })
-        .then((res) => {
-          if (res.status === 201) {
-            this.rate = res.data.rate;
-          } else {
-            console.log(res);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-  },
-  created: function () {
-    axios
-      .get(`${process.env.VUE_APP_BACKEND_BASE_URL}/movies/rate`, {
-        params: { user: this.$root.currentUserEmail, movie: this.movieId },
-      })
-      .then((response) => {
-        this.rate = response.data.rate;
-        console.log(this.rate);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
+    sendRating: function(rate){
+      console.log(rate);
+    }
+  }
+  // methods: {
+  //   sendRating: function (rate) {
+  //     this.rate = rate;
+  //     axios
+  //       .post(`${process.env.VUE_APP_BACKEND_BASE_URL}/movies/rate`, {
+  //         movie: this.movieId,
+  //         user: this.$root.currentUserEmail,
+  //         rate: rate,
+  //       })
+  //       .then((res) => {
+  //         if (res.status === 201) {
+  //           this.rate = res.data.rate;
+  //         } else {
+  //           console.log(res);
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   },
+  // },
+  // created: function () {
+  //   axios
+  //     .get(`${process.env.VUE_APP_BACKEND_BASE_URL}/movies/rate`, {
+  //       params: { user: this.$root.currentUserEmail, movie: this.movieId },
+  //     })
+  //     .then((response) => {
+  //       this.rate = response.data.rate;
+  //       console.log(this.rate);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // },
 };
 </script>
 
