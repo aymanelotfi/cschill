@@ -21,6 +21,13 @@ const routes = [
     return import('../views/Secure.vue')
   }
 }
+,
+{
+  path: "/add",
+  name: "Add",
+  component: () =>
+    import("../views/Add.vue")
+}
 ,{
    path: '/login',
    name: 'Login',

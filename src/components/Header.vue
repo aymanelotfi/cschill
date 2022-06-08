@@ -14,6 +14,9 @@
             <router-link
               to="/login"
               class="flex-1 font-bold text-sm text-right lg:text-base text-white hover:text-app-green-1 transition ease-in-out duration-300">Login</router-link>
+              <router-link
+                to="/add"
+                class="font-bold text-sm text-left lg:text-base text-white hover:text-app-green-1 transition ease-in-out duration-300">Add</router-link>
       </ul>
     </nav>
   </div>

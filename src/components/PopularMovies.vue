@@ -9,6 +9,7 @@
         backgroundImage: `url(${baseImgUrl}/w500${movie.backdrop_path})`
       }"
       class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
+      v-on:click="redirect(movie.id)"
     ></div>
   </div>
 </template>
@@ -32,6 +33,12 @@ export default {
     }
     loadData();
     return { baseImgUrl, moviesData };
+  },
+  methods:{
+    redirect(res){
+        this.$router.replace({ name: "About" });
+        console.log(res);
+    }
   }
 };
 </script>
