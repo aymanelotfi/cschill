@@ -66,7 +66,7 @@
 
   <div class="container">
 
-    <a href="#"><img  :src="'https://image.tmdb.org/t/p/original/' + $root.movi.backdrop_path" height="250" width="230" alt="cover" class="cover" /></a>
+    <a href="#"><img  :src="'https://image.tmdb.org/t/p/original/' + $root.movi.poster_path" height="250" width="230" alt="cover" class="cover" /></a>
     <div class="hero">
 
       <div class="details">
@@ -233,6 +233,8 @@ a:hover {
   top: 160px;
   left: 40px;
   z-index: 2;
+  height: 280px !important;
+  width: 210px !important;
 }
 
 .details {

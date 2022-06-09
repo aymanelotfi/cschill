@@ -13,8 +13,11 @@
     ></div> -->
 
     <div class= "zoom" v-on:click="redirect(movie)">
-    <img  :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path">
+      <div class="product-image">
+    <img  :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+                alt="Movie Poster" >
   </div>
+</div>
 </div>
 </template>
 
@@ -48,6 +51,10 @@ export default {
 };
 </script>
 <style lang="scss">
+img{
+  height: 400px !important;
+  object-fit: cover;
+}
 .zoom {
 
   transition: transform .2s; /* Animation */
@@ -57,13 +64,63 @@ export default {
   align-self: stretch;
 
 }
-.img{
-  width:5%;
-  height:10vh;
-  align-self: stretch;
-}
 .zoom:hover {
   flex-grow:2;
   transition: all 1s;
 }
+.product-image:hover.product-image {
+  transform: scale(1.2);
+  transition: 300ms;
+}
+
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 150px 50px;
+  align-content: center;
+  justify-content: center;
+}
+
+.product-image {
+  height: 500px;
+  width: 400px;
+  margin: auto;
+}
+
+.detail {
+  width: 320px;
+  align-content: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 320px;
+  margin: auto;
+  height: 400px;
+  transition: all 0.5s ease-in-out;
+}
+
+.product-image:hover {
+  transform: scale(1.2);
+}
+
+.product-image:hover .images {
+  transition: 0.5s;
+  opacity: 0.4;
+}
+
+.detail {
+  width: 250px;
+
+  position: relative;
+  right: 0%;
+  opacity: 0;
+}
+
+.product-image:hover .detail {
+  opacity: 1;
+  color: rgb(0, 0, 0);
+  transition: 0.5s;
+}
+
 </style>
