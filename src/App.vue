@@ -12,7 +12,6 @@ export default {
         return {
             authenticated: false,
             movi:Object,
-            over:"",
             mockAccount: {
                 username: "test",
                 password: "test"

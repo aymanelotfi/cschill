@@ -20,7 +20,7 @@
        </div>
        <div class="detail">
         <div class="title"> {{movie.title}}</div>
-         <p>{{movie.overview}}</p>
+         <p>{{movie.overview.substr(0,Math.min(movie.overview.length,150))+"..."}}</p>
        </div>
   </div>
 </div>
@@ -50,7 +50,7 @@ export default {
   methods:{
     redirect(res){
        this.$root.movi=res;
-       this.$root.over=res.overview.substring(0,Math.min(res.overview.length()-1),60);
+      // this.$root.over=res.overview.substring(0,Math.min(res.overview.length()-1),60);
         this.$router.replace({ name: "Movie_Detail" });
         //console.log(res);
     }
@@ -130,6 +130,11 @@ img{
   opacity: 1;
   color: rgb(255, 255, 255);
   transition: 0.5s;
+}
+.title{
+// font-family: "Times New Roman", Times, serif;
+font-weight:700;
+font-size:20px;
 }
 
 </style>

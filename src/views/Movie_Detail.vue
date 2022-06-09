@@ -123,6 +123,11 @@ export default {
     };
   },
   // methods: {
+  //   change:function(res){
+  //     return res.substring(0,Math.min(res.length-1,60))+"...";
+  //   },
+  // }
+  // methods: {
   //   fetchData: function () {
   //     axios
   //       .get(
