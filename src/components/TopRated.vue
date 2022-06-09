@@ -8,13 +8,17 @@
       :style="{
         backgroundImage: `url(${baseImgUrl}/w500${movie.backdrop_path})`
       }"
-      class="transition ease-in-out delay-150 bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
-    > -->
-    <div class= "zoom">
-    <img src="https://i.pinimg.com/originals/db/60/74/db6074fb3ad542b639d7c10180560ab3.jpg">
-    <!-- <span> {{movie.overview}}</span> -->
+      class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"
+      v-on:click="redirect(movie)"
+    ></div> -->
+
+    <div class= "zoom" v-on:click="redirect(movie)">
+      <div class="product-image">
+    <img  :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
+                alt="Movie Poster" >
   </div>
-  </div>
+</div>
+</div>
 </template>
 
 <script>
@@ -49,7 +53,6 @@ export default {
   margin: 0 auto;
   overflow:hidden;
   align-self: stretch;
-
 }
 .img{
   width:100%;

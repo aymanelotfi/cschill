@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  
+
 </template>
 <script>
 import PopularMovies from "@/components/PopularMovies.vue";

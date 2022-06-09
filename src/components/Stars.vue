@@ -1,5 +1,5 @@
 <template>
-  <div class="text-base mb-3 lg:mb-5 font-semibold">Rate this movie</div>
+  <div class="text-base text-white mb-3 lg:mb-5 font-semibold">Rate this movie</div>
   <div class="rating">
     <input
       type="radio"

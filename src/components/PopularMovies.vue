@@ -12,10 +12,16 @@
       v-on:click="redirect(movie)"
     ></div> -->
 
-    <div class= "zoom" v-on:click="redirect(movie)">
+    <div v-on:click="redirect(movie)">
       <div class="product-image">
+        <div class="images">
     <img  :src="'https://image.tmdb.org/t/p/original/' + movie.poster_path"
                 alt="Movie Poster" >
+       </div>
+       <div class="detail">
+        <div class="title"> {{movie.title}}</div>
+         <p>{{movie.overview}}</p>
+       </div>
   </div>
 </div>
 </div>
@@ -44,6 +50,7 @@ export default {
   methods:{
     redirect(res){
        this.$root.movi=res;
+       this.$root.over=res.overview.substring(0,Math.min(res.overview.length()-1),60);
         this.$router.replace({ name: "Movie_Detail" });
         //console.log(res);
     }
@@ -68,7 +75,7 @@ img{
   flex-grow:2;
   transition: all 1s;
 }
-.product-image:hover.product-image {
+.product-image:hover .product-image {
   transform: scale(1.2);
   transition: 300ms;
 }
@@ -88,9 +95,12 @@ img{
 }
 
 .detail {
-  width: 320px;
+  width: 280px;
+  bottom: 300px;
   align-content: center;
   justify-content: center;
+  color:white;
+  transition:all 0.5s ease-in-out;
 }
 
 .product-image {
@@ -111,7 +121,6 @@ img{
 
 .detail {
   width: 250px;
-
   position: relative;
   right: 0%;
   opacity: 0;
@@ -119,7 +128,7 @@ img{
 
 .product-image:hover .detail {
   opacity: 1;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   transition: 0.5s;
 }
 
