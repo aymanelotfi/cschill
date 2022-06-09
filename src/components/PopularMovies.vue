@@ -1,7 +1,7 @@
 <template>
   <div
-    v-for="(movie, id) in moviesData"
-    :key="id"
+    v-for="movie in moviesData"
+    :key="movie.id"
     class="flex flex-shrink-0 justify-center items-center w-1/2 max-w-sm mx-auto my-8"
   >
     <!-- <div
@@ -26,37 +26,59 @@
 </div>
 </div>
 </template>
-
 <script>
-import { ref } from "vue";
-import MovieService from "../../Services/MovieService.js";
+// import { ref } from "vue";
+// import MovieService from "../../Services/MovieService.js";
+import axios from "axios";
 export default {
-  setup() {
-    const baseImgUrl = ref("https://image.tmdb.org/t/p");
-    const moviesData = ref([]);
-    // eslint-disable-next-line no-unused-vars
-    async function loadData() {
-      try {
-        const moviedata = await MovieService.getPopularMovies();
-        moviesData.value = moviedata.data.results;
-        console.log(moviesData.value);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-    loadData();
-    return { baseImgUrl, moviesData };
+  name: "PopularMovies",
+  data: function () {
+    return {
+      moviesData: [],
+    };
   },
-  methods:{
+  created() {
+    axios
+      .get("http://localhost:3000/movies")
+      .then((response) => {
+        // Do something if call succeeded
+        console.log(response);
+        this.moviesData = response.data.slice(0,100);
+        console.log("ok");
+      })
+      .catch((error) => {
+        // Do something if call failed
+        console.log(error);
+      });
+  },
+  methods: {
     redirect(res){
        this.$root.movi=res;
       // this.$root.over=res.overview.substring(0,Math.min(res.overview.length()-1),60);
         this.$router.replace({ name: "Movie_Detail" });
         //console.log(res);
-    }
-  }
+    },
+    update: function (mov) {
+      this.$root.movi = mov;
+    },
+    searchMovies: function (search) {
+      axios
+        .get(`http://localhost:3000/movies`, { params: search })
+        .then((response) => {
+          this.moviesData = response;
+        })
+        .catch((error) => {
+          this.moviesLoadingError =
+            "An error occured while searching for movies.";
+          console.log(error);
+        });
+    },
+  },
+
 };
 </script>
+
+
 <style lang="scss">
 img{
   height: 400px !important;
