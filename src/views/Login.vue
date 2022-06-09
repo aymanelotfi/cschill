@@ -83,5 +83,8 @@
 #login .form-inputs label {
     padding-right: 20px;
 }
+body{
+  background-image:url("/back_ground.jpeg");
+}
 
 </style>
